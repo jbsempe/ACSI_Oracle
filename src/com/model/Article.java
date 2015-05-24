@@ -7,14 +7,19 @@ package com.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Article.findByArPrix", query = "SELECT a FROM Article a WHERE a.arPrix = :arPrix"),
     @NamedQuery(name = "Article.findByArImage", query = "SELECT a FROM Article a WHERE a.arImage = :arImage")})
 public class Article implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "article", fetch = FetchType.LAZY)
+    private List<Consulter> consulterList;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -116,6 +123,15 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "com.Article[ arId=" + arId + " ]";
+    }
+
+    @XmlTransient
+    public List<Consulter> getConsulterList() {
+        return consulterList;
+    }
+
+    public void setConsulterList(List<Consulter> consulterList) {
+        this.consulterList = consulterList;
     }
     
 }

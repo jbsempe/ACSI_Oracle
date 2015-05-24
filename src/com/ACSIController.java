@@ -77,13 +77,12 @@ public class ACSIController implements Initializable {
     
     @FXML
     private void showInscriptionAction(ActionEvent event) throws IOException, Exception{
+        (((Node) event.getSource()).getScene()).getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("view/InscriptionView.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
-        stage.setTitle("Inscription");
+        stage.setTitle("ACSI - Inscription");
         stage.setScene(scene);
         stage.show();
-    }
- 
-    
+    }    
 }

@@ -67,7 +67,7 @@ public class MainViewController implements Initializable {
     }    
     
     public void logoutUtilisateur(ActionEvent event) throws IOException{
-        (((Node) event.getSource()).getScene()).getWindow().hide();
+        ((Node)event.getSource()).getScene().getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("view/ACSI.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();

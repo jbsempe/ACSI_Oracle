@@ -9,14 +9,19 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.eclipse.persistence.config.BatchWriting;
 
 /**
@@ -37,6 +42,8 @@ import org.eclipse.persistence.config.BatchWriting;
     //@NamedQuery(name = "Utilisateur.getLastId", query = "SELECT UT_ID FROM Utilisateur WHERE ROWNUM <=1 ORDER BY UT_ID DESC"),
     @NamedQuery(name = "Utilisateur.findByUtIsadmin", query = "SELECT u FROM Utilisateur u WHERE u.utIsadmin = :utIsadmin")})
 public class Utilisateur implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur", fetch = FetchType.LAZY)
+    private List<Consulter> consulterList;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -147,6 +154,15 @@ public class Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "com.Utilisateur[ utId=" + utId + " ]";
+    }
+
+    @XmlTransient
+    public List<Consulter> getConsulterList() {
+        return consulterList;
+    }
+
+    public void setConsulterList(List<Consulter> consulterList) {
+        this.consulterList = consulterList;
     }
     
 }

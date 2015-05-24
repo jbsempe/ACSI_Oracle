@@ -34,18 +34,17 @@ public class UtilisateurDAO {
     }
     
     public void create(Utilisateur user){
-        
-		emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
-                em = emf.createEntityManager();
-		//Get transaction
-		EntityTransaction transaction = em.getTransaction();
-		transaction.begin();
-		
-		em.persist(user);
-		transaction.commit();
-		
-		//Close entity manager
-		em.close();
-		emf.close();
-	}
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.persist(user);
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
+    }
 }

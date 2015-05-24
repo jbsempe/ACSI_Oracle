@@ -63,10 +63,11 @@ public class InscriptionViewController implements Initializable {
         boolean isAdmin = this.isAdmin.isSelected();
         short admin = 0;
 
-        if(isAdmin == true)
-                admin = 1;
+        if(isAdmin == true){
+            admin = 1;
+        }
         
-        int id_user = -1;
+        int id_user = 0;
         for(com.model.Utilisateur user_list : listUtilisateur){
             if(id_user <= user_list.getUtId()){
                 id_user ++;          
@@ -76,14 +77,14 @@ public class InscriptionViewController implements Initializable {
         if(nom.getText().length() == 0 || prenom.getText().length() == 0 || cp.getText().length() == 0 || password.getText().length() == 0){
             message2.setText("Pas bien remplis !");
             
-        }else if (password.getText() != password2.getText()){
+        }else if(password.getText() == null ? password2.getText() != null : !password.getText().equals(password2.getText())){
             message2.setText("Les mots de passes ne correspondent pas.");
         }else{    
             Utilisateur user = new Utilisateur();
             user.setUtId(s1);
-            user.setUtNom( nom.getText() );
-            user.setUtPrenom( prenom.getText() );
-            user.setUtCp( cp.getText() );
+            user.setUtNom(nom.getText());
+            user.setUtPrenom(prenom.getText());
+            user.setUtCp(cp.getText());
             user.setUtPass(Hash.encrypt(password.getText()));
             user.setUtHash(password.getText());
             user.setUtIsadmin(admin);
@@ -94,11 +95,20 @@ public class InscriptionViewController implements Initializable {
             Parent parent = FXMLLoader.load(getClass().getResource("view/ACSI.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
-            stage.setTitle("Inscription");
+            stage.setTitle("ACSI - Connexion");
             stage.setScene(scene);
             stage.show();
         }
-       
-        
+    }
+    
+    @FXML
+    private void cancelInscriptionAction(ActionEvent event) throws IOException{
+        (((Node) event.getSource()).getScene()).getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/ACSI.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Connexion");
+        stage.setScene(scene);
+        stage.show();
     }
 }

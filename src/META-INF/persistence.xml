@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.model.Article</class>
     <class>com.model.Utilisateur</class>
+    <class>com.model.Consulter</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.0.26:1521:JoseSID"/>
       <property name="javax.persistence.jdbc.user" value="SYS as SYSDBA"/>
