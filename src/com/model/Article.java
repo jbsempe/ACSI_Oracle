@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Article.findByArPrix", query = "SELECT a FROM Article a WHERE a.arPrix = :arPrix"),
     @NamedQuery(name = "Article.findByArImage", query = "SELECT a FROM Article a WHERE a.arImage = :arImage")})
 public class Article implements Serializable {
+    @OneToMany(mappedBy = "arId", fetch = FetchType.LAZY)
+    private List<Statistique> statistiqueList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "article", fetch = FetchType.LAZY)
     private List<Consulter> consulterList;
     private static final long serialVersionUID = 1L;
@@ -132,6 +134,15 @@ public class Article implements Serializable {
 
     public void setConsulterList(List<Consulter> consulterList) {
         this.consulterList = consulterList;
+    }
+
+    @XmlTransient
+    public List<Statistique> getStatistiqueList() {
+        return statistiqueList;
+    }
+
+    public void setStatistiqueList(List<Statistique> statistiqueList) {
+        this.statistiqueList = statistiqueList;
     }
     
 }

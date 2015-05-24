@@ -7,6 +7,7 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,6 +33,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Consulter.findByArId", query = "SELECT c FROM Consulter c WHERE c.consulterPK.arId = :arId"),
     @NamedQuery(name = "Consulter.findByCaDate", query = "SELECT c FROM Consulter c WHERE c.consulterPK.caDate = :caDate")})
 public class Consulter implements Serializable {
+    @Column(name = "DATEFINVISITE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datefinvisite;
+    @Column(name = "DATEDEBUTVISITE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datedebutvisite;
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ConsulterPK consulterPK;
@@ -98,6 +107,22 @@ public class Consulter implements Serializable {
     @Override
     public String toString() {
         return "com.model.Consulter[ consulterPK=" + consulterPK + " ]";
+    }
+
+    public Date getDatefinvisite() {
+        return datefinvisite;
+    }
+
+    public void setDatefinvisite(Date datefinvisite) {
+        this.datefinvisite = datefinvisite;
+    }
+
+    public Date getDatedebutvisite() {
+        return datedebutvisite;
+    }
+
+    public void setDatedebutvisite(Date datedebutvisite) {
+        this.datedebutvisite = datedebutvisite;
     }
     
 }
