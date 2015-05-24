@@ -75,4 +75,15 @@ public class ACSIController implements Initializable {
         }
     }
     
+    @FXML
+    private void showInscriptionAction(ActionEvent event) throws IOException, Exception{
+        Parent parent = FXMLLoader.load(getClass().getResource("view/InscriptionView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("Inscription");
+        stage.setScene(scene);
+        stage.show();
+    }
+ 
+    
 }

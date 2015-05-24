@@ -7,6 +7,8 @@ package com.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.config.BatchWriting;
 
 /**
  *
@@ -31,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Utilisateur.findByUtCp", query = "SELECT u FROM Utilisateur u WHERE u.utCp = :utCp"),
     @NamedQuery(name = "Utilisateur.findByUtPass", query = "SELECT u FROM Utilisateur u WHERE u.utPass = :utPass"),
     @NamedQuery(name = "Utilisateur.findByUtHash", query = "SELECT u FROM Utilisateur u WHERE u.utHash = :utHash"),
+    //@NamedQuery(name = "Utilisateur.getLastId", query = "SELECT UT_ID FROM Utilisateur WHERE ROWNUM <=1 ORDER BY UT_ID DESC"),
     @NamedQuery(name = "Utilisateur.findByUtIsadmin", query = "SELECT u FROM Utilisateur u WHERE u.utIsadmin = :utIsadmin")})
 public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,7 +42,7 @@ public class Utilisateur implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "UT_ID")
-    private BigDecimal utId;
+    private Short utId;
     @Column(name = "UT_NOM")
     private String utNom;
     @Column(name = "UT_PRENOM")
@@ -55,15 +59,15 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
-    public Utilisateur(BigDecimal utId) {
+    public Utilisateur(Short utId) {
         this.utId = utId;
     }
 
-    public BigDecimal getUtId() {
+    public Short getUtId() {
         return utId;
     }
 
-    public void setUtId(BigDecimal utId) {
+    public void setUtId(Short utId) {
         this.utId = utId;
     }
 
