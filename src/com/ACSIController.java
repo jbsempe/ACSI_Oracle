@@ -51,16 +51,21 @@ public class ACSIController implements Initializable {
     private void loginAction(ActionEvent event) throws IOException, Exception{
         for(com.model.Utilisateur user : listUtilisateur){
             if(username.getText().equals(user.getUtUsername())){
-                System.out.println(Hash.decrypt(user.getUtPass()) + ", " + password.getText());
                 if(password.getText().equals(Hash.decrypt(user.getUtPass()).split("-")[0])){
-                    (((Node) event.getSource()).getScene()).getWindow().hide();
-                    Parent parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
-                    Scene scene = new Scene(parent);
+                    Utilisateur currentUser = new Utilisateur();
+                    currentUser.setUtNom(user.getUtNom());
+                    currentUser.setUtPrenom(user.getUtPrenom());
+                    currentUser.setUtIsadmin(user.getUtIsadmin());
+                    ((Node)event.getSource()).getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("view/MainView.fxml"));
+                    loader.load();
+                    Parent p = loader.getRoot();
                     Stage stage = new Stage();
-                    stage.setTitle("Main View");
-                    stage.setScene(scene);
+                    stage.setScene(new Scene(p));
+                    MainViewController mainView = loader.getController();
+                    mainView.setCurrentUser(currentUser);
                     stage.show();
-                    
                 } else{
                     message.setText("Mot de passe incorrect.");// Non géré
                 }

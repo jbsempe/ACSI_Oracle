@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MainViewController">
    <children>
-      <TableView fx:id="articleTable" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-          <TableColumn fx:id="articleImageColumn" prefWidth="97.0" text="Image" />
-          <TableColumn fx:id="articleNameColumn" prefWidth="162.0" text="Article" />
-            <TableColumn fx:id="articleRefColumn" minWidth="0.0" prefWidth="114.0" text="Référence" />
-            <TableColumn fx:id="articlePriceColumn" prefWidth="90.0" text="Prix" />
-            <TableColumn prefWidth="136.0" text="Actions" />
-        </columns>
-      </TableView>
+      <AnchorPane layoutX="112.0" layoutY="41.0" prefHeight="79.0" prefWidth="600.0" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="43.0" layoutY="20.0" text="ACSI">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="48.0" text="Liste des articles">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Hyperlink layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" text="Déconnexion" />
+            <Hyperlink fx:id="newArticleLink" layoutX="245.0" layoutY="28.0" text="Ajouter un article" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="79.0" prefHeight="321.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="articleTable" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="articleImageColumn" prefWidth="97.0" text="Image" />
+                <TableColumn fx:id="articleNameColumn" prefWidth="162.0" text="Article" />
+                  <TableColumn fx:id="articleRefColumn" minWidth="0.0" prefWidth="114.0" text="Référence" />
+                  <TableColumn fx:id="articlePriceColumn" prefWidth="90.0" text="Prix" />
+                  <TableColumn prefWidth="136.0" text="Actions" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
