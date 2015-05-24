@@ -21,8 +21,9 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" text="Déconnexion" />
             <Hyperlink fx:id="newArticleLink" layoutX="245.0" layoutY="28.0" text="Ajouter un article" visible="false" />
+            <Hyperlink alignment="CENTER_RIGHT" layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" stylesheets="@style.css" text="Déconnexion" textAlignment="RIGHT" />
+            <Label fx:id="welcomeMessage" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="12.0" prefHeight="16.0" prefWidth="228.0" text="Label" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="79.0" prefHeight="321.0" prefWidth="600.0">
