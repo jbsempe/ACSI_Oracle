@@ -9,6 +9,7 @@ import com.model.Article;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
@@ -28,6 +29,21 @@ public class ArticleDAO {
     
     public List<Article> listArticle(){
         return em.createNamedQuery("Article.findAll", Article.class).getResultList();
+    }
+    
+    public void create(Article article){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.persist(article);
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
     }
     
 }

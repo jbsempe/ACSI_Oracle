@@ -120,8 +120,14 @@ public class MainViewController implements Initializable {
         this.currentUser = user;
     }
     
-    public void addArticleAction(){
-        
+    public void addArticleAction(ActionEvent event) throws IOException{
+        (((Node) event.getSource()).getScene()).getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/AddArticleView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Inscription");
+        stage.setScene(scene);
+        stage.show();
     }
     
     public void showArticleView(Article article) throws IOException{

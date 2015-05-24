@@ -6,9 +6,13 @@
 package com;
 
 import com.model.Article;
+import com.model.Utilisateur;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -16,6 +20,19 @@ import javafx.fxml.Initializable;
  * @author nicolasthy
  */
 public class ArticleViewController implements Initializable {
+    
+    @FXML
+    private Label articleName;
+    @FXML
+    private Label articleRef;
+    @FXML
+    private Label articlePrix;
+    @FXML
+    private Button editArticle;
+    @FXML
+    private Button deleteArticle;
+    
+    private Utilisateur currentUser;
 
     /**
      * Initializes the controller class.
@@ -26,7 +43,17 @@ public class ArticleViewController implements Initializable {
     }    
     
     public void setArticle(Article article){
-        System.out.println(article.getArLabel());
+        articleName.setText(article.getArLabel());
+        articleRef.setText(article.getArRef());
+        articlePrix.setText(article.getArPrix());
+        
+        ACSIController acsi = new ACSIController();
+        currentUser = acsi.getUtilisateur();
+        
+        if(currentUser.getUtIsadmin() == 1){
+            deleteArticle.setVisible(true);
+            editArticle.setVisible(true);
+        }
     }
     
 }

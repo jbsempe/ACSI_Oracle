@@ -43,7 +43,7 @@ public class Article implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "AR_ID")
-    private BigDecimal arId;
+    private Short arId;
     @Column(name = "AR_REF")
     private String arRef;
     @Column(name = "AR_LABEL")
@@ -56,15 +56,15 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(BigDecimal arId) {
+    public Article(Short arId) {
         this.arId = arId;
     }
 
-    public BigDecimal getArId() {
+    public Short getArId() {
         return arId;
     }
 
-    public void setArId(BigDecimal arId) {
+    public void setArId(Short arId) {
         this.arId = arId;
     }
 
