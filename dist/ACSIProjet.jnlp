@@ -7,11 +7,8 @@
     <offline-allowed/>
   </information>
   <resources>
-    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-  </resources>
-  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ACSIProjet.jar" size="12747" download="eager" />
+    <jar href="ACSIProjet.jar" size="15975" download="eager" />
     <jar href="lib/eclipselink.jar" size="8482035" download="eager" />
     <jar href="lib/javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
     <jar href="lib/ojdbc14-10.2.0.4.0.jar" size="1555682" download="eager" />

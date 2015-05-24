@@ -5,7 +5,7 @@
     <class>com.model.Article</class>
     <class>com.model.Utilisateur</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.0.26:1521:JoseSID"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.37.129.4:1521:JoseSID"/>
       <property name="javax.persistence.jdbc.user" value="SYS as SYSDBA"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
       <property name="javax.persistence.jdbc.password" value="sys123lol"/>
