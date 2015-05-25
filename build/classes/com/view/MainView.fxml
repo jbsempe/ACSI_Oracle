@@ -33,32 +33,26 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="statsArticles" alignment="CENTER_RIGHT" layoutX="148.0" layoutY="28.0" onAction="#openConsult" stylesheets="@style.css" text="Stats" textAlignment="RIGHT" visible="false" />
             <Hyperlink fx:id="newArticleLink" layoutX="245.0" layoutY="28.0" onAction="#addArticleAction" text="Ajouter un article" visible="false" />
-            <Hyperlink alignment="CENTER_RIGHT" layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" stylesheets="@style.css" text="Déconnexion" textAlignment="RIGHT" />
-            <Label fx:id="welcomeMessage" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="12.0" prefHeight="16.0" prefWidth="228.0" text="Label" />
+            <Label fx:id="welcomeMessage" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="33.0" prefHeight="16.0" prefWidth="228.0" text="Label" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="13.0" prefWidth="600.0">
-         <children>
-            <MenuBar fx:id="menuBar" prefHeight="17.0" prefWidth="600.0" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="ACSI">
-                  <items>
-                        <MenuItem mnemonicParsing="false" text="Déconnexion" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                    <MenuItem mnemonicParsing="false" text="Quitter" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Statistiques">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Stats Utilisateur" />
-                        <MenuItem mnemonicParsing="false" onAction="#openMenuConsult" text="Stats Articles" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </AnchorPane>
+      <MenuBar fx:id="menuBar" prefHeight="17.0" prefWidth="600.0" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="ACSI">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#logoutUtilisateur" text="Déconnexion" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Quitter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Statistiques">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openMenuUserStats" text="Stats Utilisateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#openMenuConsult" text="Stats Articles" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

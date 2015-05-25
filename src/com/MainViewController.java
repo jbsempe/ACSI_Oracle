@@ -57,8 +57,6 @@ public class MainViewController implements Initializable {
     @FXML 
     private Hyperlink newArticleLink;
     @FXML
-    private Hyperlink statsArticles;
-    @FXML
     private Label welcomeMessage;
     @FXML
     private TableView<Article> articleTable;
@@ -90,7 +88,6 @@ public class MainViewController implements Initializable {
         welcomeMessage.setText("Bonjour "+currentUser.ucfirst(currentUser.getUtPrenom()));
         if(currentUser.getUtIsadmin() == 1){
             newArticleLink.setVisible(true);
-            statsArticles.setVisible(true);
         }
         
         listArticle = articleDAO.listArticle();
@@ -119,10 +116,9 @@ public class MainViewController implements Initializable {
     }    
     
     public void logoutUtilisateur(ActionEvent event) throws IOException{
-        ((Node)event.getSource()).getScene().getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("view/ACSI.fxml"));
         Scene scene = new Scene(parent);
-        Stage stage = new Stage();
+        Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("ACSI - Connexion");
         stage.setScene(scene);
         stage.show();
@@ -179,22 +175,20 @@ public class MainViewController implements Initializable {
     }
     
     @FXML
-    public void openConsult(ActionEvent event) throws IOException{
-        Node node= (Node)event.getSource();
-        node.getScene().getWindow().hide();
-        Parent parent = FXMLLoader.load(getClass().getResource("view/HitParadeView.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.setTitle("ACSI - Consultations");
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
     public void openMenuConsult(ActionEvent event) throws IOException{
         Parent parent = FXMLLoader.load(getClass().getResource("view/HitParadeView.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("ACSI - Consultations");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void openMenuUserStats(ActionEvent event) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("view/UtilisateurStatsView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        stage.setTitle("ACSI - Statistiques Utilisateur");
         stage.setScene(scene);
         stage.show();
     }

@@ -21,7 +21,7 @@
               <columns>
                 <TableColumn fx:id="articleNameStatColumn" prefWidth="237.0" text="Article" />
                   <TableColumn fx:id="articleRefStatColumn" prefWidth="234.0" text="Référence" />
-                  <TableColumn fx:id="articleViewsStatsColumn" prefWidth="128.0" text="Visites" />
+                  <TableColumn fx:id="articleViewsStatsColumn" prefWidth="128.0" sortType="DESCENDING" text="Visites" />
               </columns>
             </TableView>
          </children>

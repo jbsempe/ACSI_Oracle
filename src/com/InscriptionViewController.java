@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -75,11 +76,12 @@ public class InscriptionViewController implements Initializable {
         }
         short s1 = (short) id_user;
         if(nom.getText().length() == 0 || prenom.getText().length() == 0 || cp.getText().length() == 0 || password.getText().length() == 0){
-            message2.setText("Pas bien remplis !");
+            message2.setText("Veuillez remplir tous les champs.");
             
         }else if(password.getText() == null ? password2.getText() != null : !password.getText().equals(password2.getText())){
             message2.setText("Les mots de passes ne correspondent pas.");
         }else{    
+            Date date = new Date();
             Utilisateur user = new Utilisateur();
             user.setUtId(s1);
             user.setUtNom(nom.getText());
@@ -88,6 +90,7 @@ public class InscriptionViewController implements Initializable {
             user.setUtPass(Hash.encrypt(password.getText()));
             user.setUtHash(password.getText());
             user.setUtIsadmin(admin);
+            user.setUtDateinscri(date);
 
             utilisateurDAO.create(user);
 

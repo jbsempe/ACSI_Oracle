@@ -63,6 +63,8 @@ public class HitParadeViewController implements Initializable {
         
         articleStatTable.getItems().setAll(listArticle);
         
+        
+        
     }
     
     @FXML
