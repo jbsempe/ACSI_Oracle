@@ -17,8 +17,6 @@
       <TextField fx:id="nom" layoutX="299.0" layoutY="108.0" />
       <TextField fx:id="prenom" layoutX="299.0" layoutY="148.0" />
       <TextField fx:id="cp" layoutX="299.0" layoutY="188.0" />
-      <TextField fx:id="password" layoutX="299.0" layoutY="228.0" />
-      <TextField fx:id="password2" layoutX="299.0" layoutY="268.0" />
       <CheckBox fx:id="isAdmin" layoutX="264.0" layoutY="314.0" mnemonicParsing="false" text="Administrateur" />
       <Button fx:id="inscription" defaultButton="true" layoutX="229.0" layoutY="352.0" mnemonicParsing="false" onAction="#inscriptionAction" text="S'inscrire" />
       <Label fx:id="message2" alignment="CENTER" layoutX="47.0" layoutY="70.0" prefHeight="18.0" prefWidth="527.0" textFill="#e42c2c">
@@ -37,5 +35,7 @@
          </font>
       </Label>
       <Button cancelButton="true" layoutX="333.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelInscriptionAction" text="Annuler" />
+      <PasswordField fx:id="password" layoutX="299.0" layoutY="228.0" />
+      <PasswordField fx:id="password2" layoutX="299.0" layoutY="268.0" />
    </children>
 </AnchorPane>

@@ -9,6 +9,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MainViewController">
    <children>
+      <AnchorPane layoutY="79.0" prefHeight="321.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="articleTable" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="articleImageColumn" prefWidth="120.0" sortable="false" text="Image" />
+                <TableColumn fx:id="articleNameColumn" prefWidth="230.81475830078125" text="Article" />
+                  <TableColumn fx:id="articleRefColumn" minWidth="0.0" prefWidth="148.46331787109375" text="Référence" />
+                  <TableColumn fx:id="articlePriceColumn" prefWidth="100.53665161132812" text="Prix" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
       <AnchorPane layoutX="112.0" layoutY="41.0" prefHeight="79.0" prefWidth="600.0" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="43.0" layoutY="20.0" text="ACSI">
@@ -21,22 +33,10 @@
                   <Font size="10.0" />
                </font>
             </Label>
+            <Hyperlink fx:id="statsArticles" alignment="CENTER_RIGHT" layoutX="148.0" layoutY="28.0" onAction="#openConsult" stylesheets="@style.css" text="Stats" textAlignment="RIGHT" visible="false" />
             <Hyperlink fx:id="newArticleLink" layoutX="245.0" layoutY="28.0" onAction="#addArticleAction" text="Ajouter un article" visible="false" />
             <Hyperlink alignment="CENTER_RIGHT" layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" stylesheets="@style.css" text="Déconnexion" textAlignment="RIGHT" />
             <Label fx:id="welcomeMessage" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="12.0" prefHeight="16.0" prefWidth="228.0" text="Label" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="79.0" prefHeight="321.0" prefWidth="600.0">
-         <children>
-            <TableView fx:id="articleTable" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="articleImageColumn" prefWidth="97.0" text="Image" />
-                <TableColumn fx:id="articleNameColumn" prefWidth="162.0" text="Article" />
-                  <TableColumn fx:id="articleRefColumn" minWidth="0.0" prefWidth="114.0" text="Référence" />
-                  <TableColumn fx:id="articlePriceColumn" prefWidth="90.0" text="Prix" />
-                  <TableColumn prefWidth="136.0" text="Actions" />
-              </columns>
-            </TableView>
          </children>
       </AnchorPane>
    </children>

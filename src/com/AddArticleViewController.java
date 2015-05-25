@@ -10,6 +10,7 @@ import com.dao.UtilisateurDAO;
 import com.helper.Hash;
 import com.model.Article;
 import com.model.Utilisateur;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.lang.String;
@@ -26,6 +27,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -58,7 +62,7 @@ public class AddArticleViewController implements Initializable {
     @FXML
     private void addArticleAction (ActionEvent event)throws IOException, Exception{
        
-       int art_id = -1;
+       int art_id = 0;
         for(com.model.Article article_list : listArticle){
             if(art_id <= article_list.getArId()){
                 art_id ++;         
@@ -67,7 +71,7 @@ public class AddArticleViewController implements Initializable {
         art_id = art_id + 1;
         short s1 = (short) art_id;
         if(label.getText().length() == 0 || reference.getText().length() == 0 || prix.getText().length() == 0 || image.getText().length() == 0){
-            message.setText("Pas bien remplis !");
+            message.setText("Veuillez remplir tous les champs.");
     
         }
         else{    
@@ -99,5 +103,15 @@ public class AddArticleViewController implements Initializable {
         stage.setTitle("ACSI - Liste articles");
         stage.setScene(scene);
         stage.show();
+    }
+    
+    @FXML
+    private void openImageFile(ActionEvent event){
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showOpenDialog(stage);
+        System.out.println(file);
+        image.setText(file.toURI().toString());
     }
 }

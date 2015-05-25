@@ -46,4 +46,36 @@ public class ArticleDAO {
         emf.close();
     }
     
+    public void edit(Article article){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.merge(article);
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
+    }
+    
+    public void delete(Article article){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.remove(em.contains(article) ? article : em.merge(article));
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
+
+    }
+    
 }

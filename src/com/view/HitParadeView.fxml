@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.HitParadeViewController">
+   <children>
+      <Label layoutX="274.0" layoutY="14.0" text="ACSI">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="265.0" layoutY="39.0" text="Hit Parade" />
+      <AnchorPane layoutX="-1.0" layoutY="78.0">
+         <children>
+            <TableView fx:id="articleStatTable" prefHeight="322.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="articleImageStatColumn" prefWidth="97.0" text="Image" />
+                <TableColumn fx:id="articleNameStatColumn" prefWidth="158.0" text="Article" />
+                  <TableColumn fx:id="articleRefStatColumn" prefWidth="173.0" text="Référence" />
+                  <TableColumn fx:id="articlePriceStatColumn" prefWidth="171.0" text="Prix" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Hyperlink fx:id="backLink" layoutX="46.0" layoutY="27.0" onAction="#backAction" text="&lt; Retour" />
+   </children>
+</AnchorPane>

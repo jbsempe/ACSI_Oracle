@@ -8,6 +8,8 @@ package com.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -86,7 +88,10 @@ public class Article implements Serializable {
         this.arLabel = arLabel;
     }
 
-    public String getArPrix() {
+    public Double getArPrix() {
+        return arPrix;
+    }
+    public String getArPrixWithEuro(){
         return arPrix+"€";
     }
 
@@ -96,6 +101,15 @@ public class Article implements Serializable {
 
     public String getArImage() {
         return arImage;
+    }
+    
+    public ImageView getArImageView(){
+        ImageView imageview = new ImageView();
+        imageview.setFitHeight(100);
+        imageview.setFitWidth(120);
+        imageview.setImage(new Image(arImage));
+        
+        return imageview;
     }
 
     public void setArImage(String arImage) {

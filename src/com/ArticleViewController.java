@@ -5,14 +5,24 @@
  */
 package com;
 
+import com.dao.ArticleDAO;
 import com.model.Article;
 import com.model.Utilisateur;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -28,11 +38,15 @@ public class ArticleViewController implements Initializable {
     @FXML
     private Label articlePrix;
     @FXML
+    private ImageView articleImage;
+    @FXML
     private Button editArticle;
     @FXML
     private Button deleteArticle;
     
     private Utilisateur currentUser;
+    
+    private Article article;
 
     /**
      * Initializes the controller class.
@@ -45,7 +59,9 @@ public class ArticleViewController implements Initializable {
     public void setArticle(Article article){
         articleName.setText(article.getArLabel());
         articleRef.setText(article.getArRef());
-        articlePrix.setText(article.getArPrix());
+        articlePrix.setText(article.getArPrixWithEuro());
+        articleImage.setImage(new Image(article.getArImage()));
+        
         
         ACSIController acsi = new ACSIController();
         currentUser = acsi.getUtilisateur();
@@ -54,6 +70,36 @@ public class ArticleViewController implements Initializable {
             deleteArticle.setVisible(true);
             editArticle.setVisible(true);
         }
+        
+        this.article = article;
+    }
+    
+    @FXML
+    public void editArticleAction(ActionEvent event) throws IOException{        
+        (((Node) event.getSource()).getScene()).getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("view/EditArticleView.fxml"));
+        loader.load();
+        Parent p = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        EditArticleViewController articleView = loader.getController();
+        articleView.getArticle(this.article);
+        stage.show();
+    }
+    
+    @FXML
+    public void deleteArticleAction(ActionEvent event) throws IOException{
+        ArticleDAO articleDAO = new ArticleDAO();
+        articleDAO.delete(this.article);
+        
+        (((Node) event.getSource()).getScene()).getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Liste articles");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }

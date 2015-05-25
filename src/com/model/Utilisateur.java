@@ -179,4 +179,8 @@ public class Utilisateur implements Serializable {
         this.utDateinscri = utDateinscri;
     }
     
+    public static String ucfirst(String chaine){
+        return chaine.substring(0, 1).toUpperCase()+ chaine.substring(1).toLowerCase();
+    }
+    
 }

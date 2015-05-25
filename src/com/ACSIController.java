@@ -54,6 +54,7 @@ public class ACSIController implements Initializable {
             if(username.getText().equals(user.getUtUsername())){
                 if(password.getText().equals(Hash.decrypt(user.getUtPass()).split("-")[0])){
                     Utilisateur currentUser = new Utilisateur();
+                    currentUser.setUtId(user.getUtId());
                     currentUser.setUtNom(user.getUtNom());
                     currentUser.setUtPrenom(user.getUtPrenom());
                     currentUser.setUtIsadmin(user.getUtIsadmin());
@@ -89,12 +90,15 @@ public class ACSIController implements Initializable {
         Preferences prefs = Preferences.userNodeForPackage(ACSIController.class);
         Utilisateur user = new Utilisateur();
         
+        int utId = prefs.getInt("utId", 0);
         String utNom = prefs.get("utNom", null);
         String utPrenom = prefs.get("utPrenom", null);
         int utIsadmin = prefs.getInt("utIsadmin", 0);
         
         
         if(utNom != null && utPrenom != null){
+            short id = (short)utId;
+            user.setUtId(id);
             user.setUtNom(utNom);
             user.setUtPrenom(utPrenom);
             short isAdmin = (short)utIsadmin;
@@ -108,6 +112,7 @@ public class ACSIController implements Initializable {
     
     public void setUtilisateur(Utilisateur user) {
         Preferences prefs = Preferences.userNodeForPackage(ACSIController.class);
+        prefs.putInt("utId", user.getUtId());
         prefs.put("utNom", user.getUtNom());
         prefs.put("utPrenom", user.getUtPrenom());
         prefs.putInt("utIsadmin", user.getUtIsadmin());

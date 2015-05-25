@@ -6,7 +6,10 @@
 package com;
 
 import com.dao.ArticleDAO;
+import com.dao.ConsulterDAO;
 import com.model.Article;
+import com.model.Consulter;
+import com.model.ConsulterPK;
 import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
@@ -28,11 +31,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -46,11 +52,13 @@ public class MainViewController implements Initializable {
     @FXML 
     private Hyperlink newArticleLink;
     @FXML
+    private Hyperlink statsArticles;
+    @FXML
     private Label welcomeMessage;
     @FXML
     private TableView<Article> articleTable;
     @FXML
-    private TableColumn<Article, String> articleImageColumn;
+    private TableColumn<Article, Image> articleImageColumn;
     @FXML
     private TableColumn<Article, String> articleNameColumn;
     @FXML
@@ -74,15 +82,17 @@ public class MainViewController implements Initializable {
         
         ACSIController acsi = new ACSIController();
         currentUser = acsi.getUtilisateur();
-        welcomeMessage.setText("Bonjour "+currentUser.getUtPrenom());
+        welcomeMessage.setText("Bonjour "+currentUser.ucfirst(currentUser.getUtPrenom()));
         if(currentUser.getUtIsadmin() == 1){
             newArticleLink.setVisible(true);
+            statsArticles.setVisible(true);
         }
         
         listArticle = articleDAO.listArticle();
         articleNameColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arLabel"));
         articleRefColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arRef"));
-        articlePriceColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arPrix"));
+        articlePriceColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arPrixWithEuro"));
+        articleImageColumn.setCellValueFactory(new PropertyValueFactory<Article, Image>("arImageView"));
         
 
         articleTable.getItems().setAll(listArticle);
@@ -131,6 +141,19 @@ public class MainViewController implements Initializable {
     }
     
     public void showArticleView(Article article) throws IOException{
+        
+        ConsulterPK consulterPK = new ConsulterPK();
+        java.util.Date date = new java.util.Date();
+        consulterPK.setCaDate(date);
+        consulterPK.setArId(article.getArId());
+        consulterPK.setUtId(this.currentUser.getUtId());
+        
+        Consulter consulter = new Consulter();
+        consulter.setConsulterPK(consulterPK);
+        
+        ConsulterDAO consulterDAO = new ConsulterDAO();
+        consulterDAO.create(consulter);
+        
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("view/ArticleView.fxml"));
         loader.load();
@@ -139,6 +162,17 @@ public class MainViewController implements Initializable {
         stage.setScene(new Scene(p));
         ArticleViewController articleView = loader.getController();
         articleView.setArticle(article);
+        stage.show();
+    }
+    
+    @FXML
+    public void openConsult(ActionEvent event) throws IOException{
+        ((Node)event.getSource()).getScene().getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/HitParadeView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Consultations");
+        stage.setScene(scene);
         stage.show();
     }
     

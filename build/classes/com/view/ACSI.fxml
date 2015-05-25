@@ -38,5 +38,10 @@
          </font>
       </Label>
       <Hyperlink fx:id="inscription" layoutX="190.0" layoutY="266.0" onAction="#showInscriptionAction" text="Inscription" />
+      <Hyperlink layoutX="330.0" layoutY="125.0" text="?">
+         <tooltip>
+            <Tooltip text="Prenom.Nom" />
+         </tooltip>
+      </Hyperlink>
    </children>
 </AnchorPane>
