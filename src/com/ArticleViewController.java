@@ -6,10 +6,14 @@
 package com;
 
 import com.dao.ArticleDAO;
+import com.dao.ConsulterDAO;
 import com.model.Article;
+import com.model.Consulter;
 import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,7 +95,16 @@ public class ArticleViewController implements Initializable {
     @FXML
     public void deleteArticleAction(ActionEvent event) throws IOException{
         ArticleDAO articleDAO = new ArticleDAO();
+        ConsulterDAO consulterDAO = new ConsulterDAO();
+        List<Consulter> consulterList = new ArrayList();
+        consulterList = consulterDAO.listConsulter();
+        for(com.model.Consulter consulter : consulterList){
+            if(consulter.getArId().getArId() == this.article.getArId()){
+                consulterDAO.delete(consulter);
+            }
+        }
         articleDAO.delete(this.article);
+        
         
         (((Node) event.getSource()).getScene()).getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));

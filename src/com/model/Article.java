@@ -5,8 +5,10 @@
  */
 package com.model;
 
+import com.dao.ConsulterDAO;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -135,6 +137,13 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "com.Article[ arId=" + arId + " ]";
+    }
+    
+    public int getNbVisite(){
+        ConsulterDAO consulterDAO = new ConsulterDAO();
+        List<Consulter> consulterList = consulterDAO.listConsulterIdArt(arId);
+        
+        return consulterList.size();
     }
     
 }

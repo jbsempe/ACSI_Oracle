@@ -9,24 +9,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.HitParadeViewController">
    <children>
-      <Label layoutX="274.0" layoutY="14.0" text="ACSI">
+      <Label layoutX="272.0" layoutY="13.0" text="ACSI">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="265.0" layoutY="39.0" text="Hit Parade" />
+      <Label layoutX="269.0" layoutY="43.0" text="Hit Parade" />
       <AnchorPane layoutX="-1.0" layoutY="78.0">
          <children>
             <TableView fx:id="articleStatTable" prefHeight="322.0" prefWidth="600.0">
               <columns>
-                <TableColumn fx:id="articleImageStatColumn" prefWidth="97.0" text="Image" />
-                <TableColumn fx:id="articleNameStatColumn" prefWidth="158.0" text="Article" />
-                  <TableColumn fx:id="articleRefStatColumn" prefWidth="173.0" text="Référence" />
-                  <TableColumn fx:id="articlePriceStatColumn" prefWidth="171.0" text="Prix" />
+                <TableColumn fx:id="articleNameStatColumn" prefWidth="237.0" text="Article" />
+                  <TableColumn fx:id="articleRefStatColumn" prefWidth="234.0" text="Référence" />
+                  <TableColumn fx:id="articleViewsStatsColumn" prefWidth="128.0" text="Visites" />
               </columns>
             </TableView>
          </children>
       </AnchorPane>
       <Hyperlink fx:id="backLink" layoutX="46.0" layoutY="27.0" onAction="#backAction" text="&lt; Retour" />
+      <Hyperlink layoutX="446.0" layoutY="27.0" text="Statistiques avancées" />
    </children>
 </AnchorPane>

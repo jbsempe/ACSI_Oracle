@@ -5,53 +5,40 @@
  */
 package com.dao;
 
-import com.model.Article;
+import com.model.Statistique;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 /**
  *
- * @author nicolasthy
+ * @author Jean-Baptiste
  */
-public class ArticleDAO {
+public class StatistiqueDAO {
     
     EntityManager em;
     EntityManagerFactory emf;
     
-    public ArticleDAO(){
+    public StatistiqueDAO(){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();
         em.getTransaction().begin();
     }
     
-    public List<Article> listArticle(){
-        return em.createNamedQuery("Article.findAll", Article.class).getResultList();
+    public List<Statistique> listStatistique(){
+        return em.createNamedQuery("Statistique.findAll", Statistique.class).getResultList();
     }
     
-    public Article listArticleById(int arId){
-        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
-        em = emf.createEntityManager();
-
-        Article article = (Article) em.createNamedQuery("Article.findByArId", Article.class)
-                .setParameter("arId", arId)
-                .getSingleResult();
-        em.close();
-        emf.close();
-        return article;
-    }
-    
-    public void create(Article article){
+    public void create(Statistique statistique){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();
         //Get transaction
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        em.persist(article);
+        em.persist(statistique);
         transaction.commit();
 
         //Close entity manager
@@ -59,7 +46,7 @@ public class ArticleDAO {
         emf.close();
     }
     
-    public void edit(Article article){
+    public void edit(Statistique statistique){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();
 
@@ -67,7 +54,7 @@ public class ArticleDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        em.merge(article);
+        em.merge(statistique);
         transaction.commit();
 
         //Close entity manager
@@ -75,14 +62,14 @@ public class ArticleDAO {
         emf.close();
     }
     
-    public void delete(Article article){
+    public void delete(Statistique statistique){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();
         //Get transaction
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        em.remove(em.contains(article) ? article : em.merge(article));
+        em.remove(em.contains(statistique) ? statistique : em.merge(statistique));
         transaction.commit();
 
         //Close entity manager

@@ -6,7 +6,9 @@
 package com;
 
 import com.dao.ArticleDAO;
+import com.dao.StatistiqueDAO;
 import com.model.Article;
+import com.model.Statistique;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Double.parseDouble;
@@ -46,6 +48,9 @@ public class EditArticleViewController implements Initializable {
 
     private ArticleDAO articleDAO = new ArticleDAO();
     private Article article;
+    private List<Statistique> listStatistique = new ArrayList();
+    private StatistiqueDAO statistiqueDAO = new StatistiqueDAO();
+    private Statistique statistique;
 
     /**
      * Initializes the controller class.
@@ -53,6 +58,7 @@ public class EditArticleViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        listStatistique = statistiqueDAO.listStatistique();
     }    
     
     public void getArticle(Article article){
@@ -66,6 +72,25 @@ public class EditArticleViewController implements Initializable {
     
     @FXML
     public void editArticleAction(ActionEvent event) throws IOException{
+        if (listStatistique.isEmpty()){
+            Statistique statistique = new Statistique();
+            statistique.setStId(1);
+            statistique.setStNbcree(0);
+            statistique.setStNbmodif(1);
+            statistique.setStNbsuppr(0);
+
+            statistiqueDAO.create(statistique);
+        } else {
+            Statistique statistique = listStatistique.get(0);
+            int nb_modif = 0;
+            for(com.model.Statistique statistiqueList : listStatistique){
+                nb_modif = statistiqueList.getStNbmodif();
+            }
+            nb_modif = nb_modif + 1;
+            statistique.setStNbmodif(nb_modif);
+            statistiqueDAO.edit(statistique);
+        }
+        
         this.article.setArLabel(label.getText());
         this.article.setArRef(reference.getText());
         Double articlePrix = parseDouble(prix.getText());

@@ -40,13 +40,11 @@ public class HitParadeViewController implements Initializable {
     @FXML
     private TableView<Article> articleStatTable;
     @FXML
-    private TableColumn<Article, String> articleImageStatColumn;
-    @FXML
     private TableColumn<Article, String> articleNameStatColumn;
     @FXML
     private TableColumn<Article, String> articleRefStatColumn;
     @FXML
-    private TableColumn<Article, String> articlePriceStatColumn;
+    private TableColumn<Article, Integer> articleViewsStatsColumn;
     
     private List<Article> listArticle = new ArrayList();
     private ArticleDAO articleDAO = new ArticleDAO();
@@ -61,6 +59,7 @@ public class HitParadeViewController implements Initializable {
         listArticle = articleDAO.listArticle();
         articleNameStatColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arLabel"));
         articleRefStatColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("arRef"));
+        articleViewsStatsColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("nbVisite"));
         
         articleStatTable.getItems().setAll(listArticle);
         

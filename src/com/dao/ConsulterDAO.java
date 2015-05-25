@@ -5,6 +5,7 @@
  */
 package com.dao;
 
+import com.model.Article;
 import com.model.Consulter;
 import com.model.Utilisateur;
 import java.util.List;
@@ -29,6 +30,15 @@ public class ConsulterDAO {
     
     public List<Consulter> listConsulter(){
         return em.createNamedQuery("Consulter.findAll", Consulter.class).getResultList();
+    }
+    
+    public List<Consulter> listConsulterIdArt(int arId){
+        ArticleDAO articleDAO = new ArticleDAO();
+        Article article = articleDAO.listArticleById(arId);
+        
+        return em.createNamedQuery("Consulter.findByArId", Consulter.class)
+                .setParameter("arId", article)
+                .getResultList();
     }
     
     public void create(Consulter consulter){
@@ -60,5 +70,21 @@ public class ConsulterDAO {
         //Close entity manager
         em.close();
         emf.close();
+    }
+    
+    public void delete(Consulter consulter){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.remove(em.contains(consulter) ? consulter : em.merge(consulter));
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
+
     }
 }

@@ -6,9 +6,11 @@
 package com;
 
 import com.dao.ArticleDAO;
+import com.dao.StatistiqueDAO;
 import com.dao.UtilisateurDAO;
 import com.helper.Hash;
 import com.model.Article;
+import com.model.Statistique;
 import com.model.Utilisateur;
 import java.io.File;
 import java.io.IOException;
@@ -51,16 +53,39 @@ public class AddArticleViewController implements Initializable {
     private Label message;
 
     private List<Article> listArticle = new ArrayList();
+    private List<Statistique> listStatistique = new ArrayList();
     private ArticleDAO articleDAO = new ArticleDAO();
+    private StatistiqueDAO statistiqueDAO = new StatistiqueDAO();
+    private Statistique statistique;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listArticle = articleDAO.listArticle();
+        listStatistique = statistiqueDAO.listStatistique();
       
     }
     
     @FXML
     private void addArticleAction (ActionEvent event)throws IOException, Exception{
+        
+        if (listStatistique.isEmpty()){
+            Statistique statistique = new Statistique();
+            statistique.setStId(1);
+            statistique.setStNbcree(1);
+            statistique.setStNbmodif(0);
+            statistique.setStNbsuppr(0);
+
+            statistiqueDAO.create(statistique);
+        } else {
+            Statistique statistique = listStatistique.get(0);
+            int nb_cree = 0;
+            for(com.model.Statistique statistiqueList : listStatistique){
+                nb_cree = statistiqueList.getStNbcree();
+            }
+            nb_cree = nb_cree + 1;
+            statistique.setStNbcree(nb_cree);
+            statistiqueDAO.edit(statistique);
+        }
        
        int art_id = 0;
         for(com.model.Article article_list : listArticle){

@@ -36,50 +36,50 @@ public class Statistique implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ST_ID")
-    private BigDecimal stId;
+    private Integer stId;
     @Column(name = "ST_NBCREE")
-    private BigInteger stNbcree;
+    private Integer stNbcree;
     @Column(name = "ST_NBSUPPR")
-    private BigInteger stNbsuppr;
+    private Integer stNbsuppr;
     @Column(name = "ST_NBMODIF")
-    private BigInteger stNbmodif;
+    private Integer stNbmodif;
 
     public Statistique() {
     }
 
-    public Statistique(BigDecimal stId) {
+    public Statistique(Integer stId) {
         this.stId = stId;
     }
 
-    public BigDecimal getStId() {
+    public Integer getStId() {
         return stId;
     }
 
-    public void setStId(BigDecimal stId) {
+    public void setStId(Integer stId) {
         this.stId = stId;
     }
 
-    public BigInteger getStNbcree() {
+    public Integer getStNbcree() {
         return stNbcree;
     }
 
-    public void setStNbcree(BigInteger stNbcree) {
+    public void setStNbcree(Integer stNbcree) {
         this.stNbcree = stNbcree;
     }
 
-    public BigInteger getStNbsuppr() {
+    public Integer getStNbsuppr() {
         return stNbsuppr;
     }
 
-    public void setStNbsuppr(BigInteger stNbsuppr) {
+    public void setStNbsuppr(Integer stNbsuppr) {
         this.stNbsuppr = stNbsuppr;
     }
 
-    public BigInteger getStNbmodif() {
+    public Integer getStNbmodif() {
         return stNbmodif;
     }
 
-    public void setStNbmodif(BigInteger stNbmodif) {
+    public void setStNbmodif(Integer stNbmodif) {
         this.stNbmodif = stNbmodif;
     }
 
