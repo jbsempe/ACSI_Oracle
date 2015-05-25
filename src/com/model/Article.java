@@ -40,8 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Article implements Serializable {
     @OneToMany(mappedBy = "arId", fetch = FetchType.LAZY)
     private List<Statistique> statistiqueList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "article", fetch = FetchType.LAZY)
-    private List<Consulter> consulterList;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -139,15 +137,6 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "com.Article[ arId=" + arId + " ]";
-    }
-
-    @XmlTransient
-    public List<Consulter> getConsulterList() {
-        return consulterList;
-    }
-
-    public void setConsulterList(List<Consulter> consulterList) {
-        this.consulterList = consulterList;
     }
 
     @XmlTransient

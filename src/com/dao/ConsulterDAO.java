@@ -45,4 +45,20 @@ public class ConsulterDAO {
         em.close();
         emf.close();
     }
+    
+    public void update(Consulter consulter){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+
+        //Get transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.merge(consulter);
+        transaction.commit();
+
+        //Close entity manager
+        em.close();
+        emf.close();
+    }
 }

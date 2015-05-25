@@ -9,10 +9,10 @@ import com.dao.ArticleDAO;
 import com.dao.ConsulterDAO;
 import com.model.Article;
 import com.model.Consulter;
-import com.model.ConsulterPK;
 import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,6 +23,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,6 +41,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 /**
@@ -142,14 +144,14 @@ public class MainViewController implements Initializable {
     
     public void showArticleView(Article article) throws IOException{
         
-        ConsulterPK consulterPK = new ConsulterPK();
-        java.util.Date date = new java.util.Date();
-        consulterPK.setCaDate(date);
-        consulterPK.setArId(article.getArId());
-        consulterPK.setUtId(this.currentUser.getUtId());
-        
         Consulter consulter = new Consulter();
-        consulter.setConsulterPK(consulterPK);
+        java.util.Date date= new java.util.Date();
+        Timestamp currentTimestamp = new Timestamp(date.getTime());
+        System.out.println(currentTimestamp);
+        consulter.setDatedebutvisite(currentTimestamp);
+        consulter.setArId(article);
+        consulter.setUtId(currentUser);
+        
         
         ConsulterDAO consulterDAO = new ConsulterDAO();
         consulterDAO.create(consulter);
@@ -162,6 +164,14 @@ public class MainViewController implements Initializable {
         stage.setScene(new Scene(p));
         ArticleViewController articleView = loader.getController();
         articleView.setArticle(article);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                java.util.Date endDate= new java.util.Date();
+                consulter.setDatefinvisite(new Timestamp(endDate.getTime()));
+                consulterDAO.update(consulter);
+                System.out.println(currentTimestamp);
+            }
+        });      
         stage.show();
     }
     

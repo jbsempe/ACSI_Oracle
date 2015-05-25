@@ -48,8 +48,6 @@ public class Utilisateur implements Serializable {
     @Column(name = "UT_DATEINSCRI")
     @Temporal(TemporalType.DATE)
     private Date utDateinscri;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur", fetch = FetchType.LAZY)
-    private List<Consulter> consulterList;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -160,15 +158,6 @@ public class Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "com.Utilisateur[ utId=" + utId + " ]";
-    }
-
-    @XmlTransient
-    public List<Consulter> getConsulterList() {
-        return consulterList;
-    }
-
-    public void setConsulterList(List<Consulter> consulterList) {
-        this.consulterList = consulterList;
     }
 
     public Date getUtDateinscri() {

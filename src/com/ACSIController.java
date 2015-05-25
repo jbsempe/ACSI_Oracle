@@ -51,7 +51,7 @@ public class ACSIController implements Initializable {
     @FXML
     private void loginAction(ActionEvent event) throws IOException, Exception{
         for(com.model.Utilisateur user : listUtilisateur){
-            if(username.getText().equals(user.getUtUsername())){
+            if(username.getText().toLowerCase().equals(user.getUtUsername())){
                 if(password.getText().equals(Hash.decrypt(user.getUtPass()).split("-")[0])){
                     Utilisateur currentUser = new Utilisateur();
                     currentUser.setUtId(user.getUtId());
