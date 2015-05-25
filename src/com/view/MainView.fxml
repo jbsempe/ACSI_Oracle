@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MainViewController">
    <children>
-      <AnchorPane layoutY="79.0" prefHeight="321.0" prefWidth="600.0">
+      <AnchorPane layoutY="119.0" prefHeight="321.0" prefWidth="600.0">
          <children>
             <TableView fx:id="articleTable" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
@@ -21,7 +21,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="112.0" layoutY="41.0" prefHeight="79.0" prefWidth="600.0" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="112.0" layoutY="33.0" prefHeight="86.0" prefWidth="600.0" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
          <children>
             <Label layoutX="43.0" layoutY="20.0" text="ACSI">
                <font>
@@ -37,6 +37,27 @@
             <Hyperlink fx:id="newArticleLink" layoutX="245.0" layoutY="28.0" onAction="#addArticleAction" text="Ajouter un article" visible="false" />
             <Hyperlink alignment="CENTER_RIGHT" layoutX="486.0" layoutY="28.0" onAction="#logoutUtilisateur" stylesheets="@style.css" text="Déconnexion" textAlignment="RIGHT" />
             <Label fx:id="welcomeMessage" alignment="CENTER_RIGHT" layoutX="341.0" layoutY="12.0" prefHeight="16.0" prefWidth="228.0" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="13.0" prefWidth="600.0">
+         <children>
+            <MenuBar fx:id="menuBar" prefHeight="17.0" prefWidth="600.0" AnchorPane.bottomAnchor="423.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="ACSI">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Déconnexion" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Quitter" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Statistiques">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Stats Utilisateur" />
+                        <MenuItem mnemonicParsing="false" onAction="#openMenuConsult" text="Stats Articles" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </AnchorPane>
    </children>

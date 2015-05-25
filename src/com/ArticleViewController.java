@@ -7,8 +7,10 @@ package com;
 
 import com.dao.ArticleDAO;
 import com.dao.ConsulterDAO;
+import com.dao.StatistiqueDAO;
 import com.model.Article;
 import com.model.Consulter;
+import com.model.Statistique;
 import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
@@ -51,6 +53,9 @@ public class ArticleViewController implements Initializable {
     private Utilisateur currentUser;
     
     private Article article;
+    private List<Statistique> listStatistique = new ArrayList();
+    private StatistiqueDAO statistiqueDAO = new StatistiqueDAO();
+    private Statistique statistique;
 
     /**
      * Initializes the controller class.
@@ -58,6 +63,7 @@ public class ArticleViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        listStatistique = statistiqueDAO.listStatistique();
     }    
     
     public void setArticle(Article article){
@@ -94,6 +100,25 @@ public class ArticleViewController implements Initializable {
     
     @FXML
     public void deleteArticleAction(ActionEvent event) throws IOException{
+        if (listStatistique.isEmpty()){
+            Statistique statistique = new Statistique();
+            statistique.setStId(1);
+            statistique.setStNbcree(0);
+            statistique.setStNbmodif(0);
+            statistique.setStNbsuppr(1);
+
+            statistiqueDAO.create(statistique);
+        } else {
+            Statistique statistique = listStatistique.get(0);
+            int nb_sup = 0;
+            for(com.model.Statistique statistiqueList : listStatistique){
+                nb_sup = statistiqueList.getStNbsuppr();
+            }
+            nb_sup = nb_sup + 1;
+            statistique.setStNbsuppr(nb_sup);
+            statistiqueDAO.edit(statistique);
+        }
+        
         ArticleDAO articleDAO = new ArticleDAO();
         ConsulterDAO consulterDAO = new ConsulterDAO();
         List<Consulter> consulterList = new ArrayList();

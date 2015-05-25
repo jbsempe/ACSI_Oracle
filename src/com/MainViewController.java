@@ -32,6 +32,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -51,6 +52,8 @@ import javafx.util.Callback;
  */
 public class MainViewController implements Initializable {
     
+    @FXML
+    private MenuBar menuBar;
     @FXML 
     private Hyperlink newArticleLink;
     @FXML
@@ -177,10 +180,20 @@ public class MainViewController implements Initializable {
     
     @FXML
     public void openConsult(ActionEvent event) throws IOException{
-        ((Node)event.getSource()).getScene().getWindow().hide();
+        Node node= (Node)event.getSource();
+        node.getScene().getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("view/HitParadeView.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
+        stage.setTitle("ACSI - Consultations");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void openMenuConsult(ActionEvent event) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("view/HitParadeView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) menuBar.getScene().getWindow();
         stage.setTitle("ACSI - Consultations");
         stage.setScene(scene);
         stage.show();
