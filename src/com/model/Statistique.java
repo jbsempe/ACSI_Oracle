@@ -11,10 +11,7 @@ import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -46,9 +43,6 @@ public class Statistique implements Serializable {
     private BigInteger stNbsuppr;
     @Column(name = "ST_NBMODIF")
     private BigInteger stNbmodif;
-    @JoinColumn(name = "AR_ID", referencedColumnName = "AR_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Article arId;
 
     public Statistique() {
     }
@@ -87,14 +81,6 @@ public class Statistique implements Serializable {
 
     public void setStNbmodif(BigInteger stNbmodif) {
         this.stNbmodif = stNbmodif;
-    }
-
-    public Article getArId() {
-        return arId;
-    }
-
-    public void setArId(Article arId) {
-        this.arId = arId;
     }
 
     @Override

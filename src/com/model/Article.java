@@ -38,8 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Article.findByArPrix", query = "SELECT a FROM Article a WHERE a.arPrix = :arPrix"),
     @NamedQuery(name = "Article.findByArImage", query = "SELECT a FROM Article a WHERE a.arImage = :arImage")})
 public class Article implements Serializable {
-    @OneToMany(mappedBy = "arId", fetch = FetchType.LAZY)
-    private List<Statistique> statistiqueList;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -137,15 +135,6 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "com.Article[ arId=" + arId + " ]";
-    }
-
-    @XmlTransient
-    public List<Statistique> getStatistiqueList() {
-        return statistiqueList;
-    }
-
-    public void setStatistiqueList(List<Statistique> statistiqueList) {
-        this.statistiqueList = statistiqueList;
     }
     
 }
