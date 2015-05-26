@@ -9,6 +9,7 @@ import com.dao.ArticleDAO;
 import com.dao.ConsulterDAO;
 import com.model.Article;
 import com.model.Consulter;
+import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class HitParadeViewController implements Initializable {
     @FXML
     private Hyperlink backLink;
     @FXML
+    private Hyperlink advanceStatsLink;
+    @FXML
     private Label totalVisites;
     @FXML
     private TableView<Article> articleStatTable;
@@ -55,6 +58,8 @@ public class HitParadeViewController implements Initializable {
     private List<Consulter> listConsulter = new ArrayList();
     private ArticleDAO articleDAO = new ArticleDAO();
     private ConsulterDAO consulterDAO = new ConsulterDAO();
+    
+    private Utilisateur currentUser;
 
     /**
      * Initializes the controller class.
@@ -62,6 +67,12 @@ public class HitParadeViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        ACSIController acsi = new ACSIController();
+        currentUser = acsi.getUtilisateur();
+        if(currentUser.getUtIsadmin() == 1){
+            advanceStatsLink.setVisible(true);
+        }
         
         listArticle = articleDAO.listArticle();
         listConsulter = consulterDAO.listConsulter();
@@ -73,6 +84,17 @@ public class HitParadeViewController implements Initializable {
         
         totalVisites.setText(""+listConsulter.size());
         
+    }
+    
+    @FXML
+    public void openAdvanceStats(ActionEvent event) throws IOException{
+        ((Node)event.getSource()).getScene().getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/ArticleUtilisateurStatsView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Statistiques avancées");
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML

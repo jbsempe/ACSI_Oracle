@@ -41,6 +41,15 @@ public class ConsulterDAO {
                 .getResultList();
     }
     
+    public List<Consulter> listConsulterIdUt(int utId){
+        UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+        Utilisateur utilisateur = utilisateurDAO.listUtilisateurById(utId);
+        
+        return em.createNamedQuery("Consulter.findByUtId", Consulter.class)
+                .setParameter("utId", utilisateur)
+                .getResultList();
+    }
+    
     public void create(Consulter consulter){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();

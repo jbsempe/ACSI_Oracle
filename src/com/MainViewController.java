@@ -85,7 +85,7 @@ public class MainViewController implements Initializable {
         
         ACSIController acsi = new ACSIController();
         currentUser = acsi.getUtilisateur();
-        welcomeMessage.setText("Bonjour "+currentUser.ucfirst(currentUser.getUtPrenom()));
+        welcomeMessage.setText("Bonjour "+currentUser.ucfirst(currentUser.getUtPrenom()) + " ("+ currentUser.getUtCp()+")");
         if(currentUser.getUtIsadmin() == 1){
             newArticleLink.setVisible(true);
         }

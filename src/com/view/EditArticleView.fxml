@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.EditArticleViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.EditArticleViewController">
    <children>
       <Label fx:id="message" alignment="CENTER" layoutX="109.0" layoutY="105.0" prefHeight="16.0" prefWidth="414.0" textFill="#e41212" />
       <Button layoutX="319.0" layoutY="320.0" mnemonicParsing="false" onAction="#cancelAction" text="Annuler" />
@@ -29,8 +28,8 @@
       <TextField fx:id="label" layoutX="282.0" layoutY="139.0" />
       <Button defaultButton="true" layoutX="238.0" layoutY="320.0" mnemonicParsing="false" onAction="#editArticleAction" text="Modifier" />
       <Label alignment="CENTER_RIGHT" layoutX="188.0" layoutY="220.0" prefWidth="70.0" text="Prix:" />
-      <Label alignment="CENTER_RIGHT" layoutX="188.0" layoutY="181.0" prefWidth="70.0" text="Reference:" />
+      <Label alignment="CENTER_RIGHT" layoutX="188.0" layoutY="181.0" prefWidth="70.0" text="Référence:" />
       <Label alignment="CENTER_RIGHT" layoutX="188.0" layoutY="144.0" prefWidth="70.0" text="Article:" />
-      <Button layoutX="471.0" layoutY="256.0" mnemonicParsing="false" onAction="#openImageFile" text="Open File" />
+      <Button layoutX="471.0" layoutY="256.0" mnemonicParsing="false" onAction="#openImageFile" text="Ouvrir un fichier" />
    </children>
 </AnchorPane>

@@ -5,10 +5,15 @@
  */
 package com;
 
+import com.dao.ConsulterDAO;
 import com.dao.UtilisateurDAO;
+import com.model.Consulter;
 import com.model.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,10 +39,16 @@ public class UtilisateurStatsViewController implements Initializable {
     private Label usersToday;
     @FXML
     private Label totalUsers;
+    @FXML
+    private Label averageTime;
     
     private List<Utilisateur> listUtilisateur = new ArrayList();
     private List<Utilisateur> listUtilisateurToday = new ArrayList();
+    private List<Consulter> listConsulter = new ArrayList();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+    private ConsulterDAO consulterDAO = new ConsulterDAO();
+    
+    private long averageDateDiff;
 
     /**
      * Initializes the controller class.
@@ -51,7 +62,27 @@ public class UtilisateurStatsViewController implements Initializable {
         Date date = new Date();
         listUtilisateurToday = utilisateurDAO.listUtilisateurByDate(date);
         usersToday.setText(""+listUtilisateurToday.size());
+        
+        getAverageTime();
     }    
+    
+    public void getAverageTime(){
+        listConsulter = consulterDAO.listConsulter();
+        this.averageDateDiff = 0;
+        for(com.model.Consulter consulter : listConsulter){
+            if(consulter.getDatefinvisite() != null){
+                this.averageDateDiff += this.averageDateDiff + (consulter.getDatefinvisite().getTime() - consulter.getDatedebutvisite().getTime());
+            }
+        }
+        System.out.println(this.averageDateDiff +", "+ listConsulter.size(  ));
+        long averageDateTime = this.averageDateDiff / listConsulter.size();
+        long second = (averageDateTime / 1000) % 60;
+        long minute = (averageDateTime / (1000 * 60)) % 60;
+        long hour = (averageDateTime / (1000 * 60 * 60)) % 24;
+
+        String time = String.format("%02d h %02d min %02d sec", hour, minute, second);
+        averageTime.setText(time+" ");
+    }
     
     @FXML
     public void backAction(ActionEvent event) throws IOException{

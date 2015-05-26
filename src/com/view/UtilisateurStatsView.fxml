@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="270.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.UtilisateurStatsViewController">
+<AnchorPane id="AnchorPane" prefHeight="270.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.UtilisateurStatsViewController">
    <children>
       <Label layoutX="271.0" layoutY="27.0" text="ACSI">
          <font>
@@ -21,5 +20,7 @@
       <Label fx:id="usersToday" layoutX="323.0" layoutY="119.0" prefWidth="200.0" text="0" />
       <Label fx:id="totalUsers" layoutX="323.0" layoutY="157.0" prefWidth="200.0" text="0" />
       <Hyperlink layoutX="45.0" layoutY="40.0" onAction="#backAction" text="&lt; Back" />
+      <Label fx:id="averageTime" layoutX="323.0" layoutY="192.0" prefWidth="200.0" text="0" />
+      <Label layoutX="115.0" layoutY="192.0" text="Temps moyen de consultation :" />
    </children>
 </AnchorPane>

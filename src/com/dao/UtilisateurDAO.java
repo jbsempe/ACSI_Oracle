@@ -38,6 +38,18 @@ public class UtilisateurDAO {
         return em.createNamedQuery("Utilisateur.findByDate", Utilisateur.class).setParameter("utDateinscri", date).getResultList();
     }
     
+    public Utilisateur listUtilisateurById(int utId){
+        emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
+        em = emf.createEntityManager();
+
+        Utilisateur utilisateur = (Utilisateur) em.createNamedQuery("Utilisateur.findByUtId", Utilisateur.class)
+                .setParameter("utId", utId)
+                .getSingleResult();
+        em.close();
+        emf.close();
+        return utilisateur;
+    }
+    
     public void create(Utilisateur user){
         emf = Persistence.createEntityManagerFactory("ACSIProjetPU");
         em = emf.createEntityManager();

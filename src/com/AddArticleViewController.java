@@ -90,7 +90,7 @@ public class AddArticleViewController implements Initializable {
        int art_id = 0;
         for(com.model.Article article_list : listArticle){
             if(art_id <= article_list.getArId()){
-                art_id ++;         
+                art_id = article_list.getArId();
             }
         }
         art_id = art_id + 1;

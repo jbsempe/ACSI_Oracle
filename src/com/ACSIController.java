@@ -58,6 +58,7 @@ public class ACSIController implements Initializable {
                     currentUser.setUtNom(user.getUtNom());
                     currentUser.setUtPrenom(user.getUtPrenom());
                     currentUser.setUtIsadmin(user.getUtIsadmin());
+                    currentUser.setUtCp(user.getUtCp());
                     setUtilisateur(currentUser);
                     ((Node)event.getSource()).getScene().getWindow().hide();
                     Parent parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
@@ -94,6 +95,7 @@ public class ACSIController implements Initializable {
         String utNom = prefs.get("utNom", null);
         String utPrenom = prefs.get("utPrenom", null);
         int utIsadmin = prefs.getInt("utIsadmin", 0);
+        String utCp = prefs.get("utCp", null);
         
         
         if(utNom != null && utPrenom != null){
@@ -103,6 +105,7 @@ public class ACSIController implements Initializable {
             user.setUtPrenom(utPrenom);
             short isAdmin = (short)utIsadmin;
             user.setUtIsadmin(isAdmin);
+            user.setUtCp(utCp);
             
             return user;
         }
@@ -116,5 +119,6 @@ public class ACSIController implements Initializable {
         prefs.put("utNom", user.getUtNom());
         prefs.put("utPrenom", user.getUtPrenom());
         prefs.putInt("utIsadmin", user.getUtIsadmin());
+        prefs.put("utCp", user.getUtCp());
     }
 }
