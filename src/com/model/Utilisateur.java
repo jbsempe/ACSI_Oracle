@@ -43,7 +43,8 @@ import org.eclipse.persistence.config.BatchWriting;
     @NamedQuery(name = "Utilisateur.findByUtPass", query = "SELECT u FROM Utilisateur u WHERE u.utPass = :utPass"),
     @NamedQuery(name = "Utilisateur.findByUtHash", query = "SELECT u FROM Utilisateur u WHERE u.utHash = :utHash"),
     //@NamedQuery(name = "Utilisateur.getLastId", query = "SELECT UT_ID FROM Utilisateur WHERE ROWNUM <=1 ORDER BY UT_ID DESC"),
-    @NamedQuery(name = "Utilisateur.findByUtIsadmin", query = "SELECT u FROM Utilisateur u WHERE u.utIsadmin = :utIsadmin")})
+    @NamedQuery(name = "Utilisateur.findByUtIsadmin", query = "SELECT u FROM Utilisateur u WHERE u.utIsadmin = :utIsadmin"),
+    @NamedQuery(name = "Utilisateur.findByDate", query = "SELECT u FROM Utilisateur u WHERE u.utDateinscri = :utDateinscri")})
 public class Utilisateur implements Serializable {
     @Column(name = "UT_DATEINSCRI")
     @Temporal(TemporalType.DATE)

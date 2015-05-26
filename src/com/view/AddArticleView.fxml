@@ -32,6 +32,5 @@
       <Button layoutX="309.0" layoutY="310.0" mnemonicParsing="false" onAction="#cancelAction" text="Annuler" />
       <Label fx:id="message" alignment="CENTER" layoutX="99.0" layoutY="95.0" prefHeight="16.0" prefWidth="414.0" textFill="#e41212" />
       <Button layoutX="461.0" layoutY="246.0" mnemonicParsing="false" onAction="#openImageFile" text="Open File" />
-      <ImageView fx:id="articleImage" fitHeight="150.0" fitWidth="122.0" layoutX="20.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -8,6 +8,7 @@ package com.dao;
 import com.model.Utilisateur;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,6 +32,10 @@ public class UtilisateurDAO {
     
     public List<Utilisateur> listUtilisateur(){
         return em.createNamedQuery("Utilisateur.findAll", Utilisateur.class).getResultList();
+    }
+    
+    public List<Utilisateur> listUtilisateurByDate(Date date){
+        return em.createNamedQuery("Utilisateur.findByDate", Utilisateur.class).setParameter("utDateinscri", date).getResultList();
     }
     
     public void create(Utilisateur user){

@@ -5,6 +5,7 @@
         <group>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/view/ACSI.fxml</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/view/MainView.fxml</file>
+            <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/dao/StatistiqueDAO.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/dao/ArticleDAO.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/model/Article.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/model/Consulter.java</file>
@@ -15,10 +16,11 @@
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/InscriptionViewController.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/model/Utilisateur.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/view/style.css</file>
+            <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/view/UtilisateurStatsView.fxml</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/dao/ConsulterDAO.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/model/Statistique.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/EditArticleViewController.java</file>
-            <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/model/ConsulterPK.java</file>
+            <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/UtilisateurStatsViewController.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/ACSIController.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/dao/UtilisateurDAO.java</file>
             <file>file:/Volumes/Macintosh%20HD/Users/nicolasthy/Workshop/Java/ACSI_Oracle/src/com/MainViewController.java</file>
