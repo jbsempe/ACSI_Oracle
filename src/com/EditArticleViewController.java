@@ -112,6 +112,12 @@ public class EditArticleViewController implements Initializable {
     @FXML
     private void cancelAction(ActionEvent event) throws IOException{
         (((Node) event.getSource()).getScene()).getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setTitle("ACSI - Liste articles");
+        stage.setScene(scene);
+        stage.show();
     }
     
     @FXML

@@ -59,6 +59,8 @@ public class ArticleUtilisateurStatsViewController implements Initializable {
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
     private ConsulterDAO consulterDAO = new ConsulterDAO();
     private StatistiqueDAO statistiqueDAO = new StatistiqueDAO();
+    
+    private Utilisateur currentUser;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -67,6 +69,13 @@ public class ArticleUtilisateurStatsViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Get an array with the English month names.
+        ACSIController acsi = new ACSIController();
+        currentUser = acsi.getUtilisateur();
+        if(currentUser.getUtIsadmin() == 1){
+            addedArticlesLabel.setVisible(true);
+            updatedArticlesLabel.setVisible(true);
+            deletedArticlesLabel.setVisible(true);
+        }
         listUtilisateur = utilisateurDAO.listUtilisateur();
         listStatistique = statistiqueDAO.listStatistique();
         Statistique statistique = listStatistique.get(0);

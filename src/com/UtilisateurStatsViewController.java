@@ -41,6 +41,8 @@ public class UtilisateurStatsViewController implements Initializable {
     private Label totalUsers;
     @FXML
     private Label averageTime;
+    @FXML
+    private Label averageTimeLabel;
     
     private List<Utilisateur> listUtilisateur = new ArrayList();
     private List<Utilisateur> listUtilisateurToday = new ArrayList();
@@ -50,12 +52,19 @@ public class UtilisateurStatsViewController implements Initializable {
     
     private long averageDateDiff;
 
+    private Utilisateur currentUser;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        ACSIController acsi = new ACSIController();
+        currentUser = acsi.getUtilisateur();
+        if(currentUser.getUtIsadmin() == 1){
+            averageTime.setVisible(true);
+            averageTimeLabel.setVisible(true);
+        }
         listUtilisateur = utilisateurDAO.listUtilisateur();
         totalUsers.setText(""+listUtilisateur.size());
         
@@ -71,7 +80,7 @@ public class UtilisateurStatsViewController implements Initializable {
         this.averageDateDiff = 0;
         for(com.model.Consulter consulter : listConsulter){
             if(consulter.getDatefinvisite() != null){
-                this.averageDateDiff += this.averageDateDiff + (consulter.getDatefinvisite().getTime() - consulter.getDatedebutvisite().getTime());
+                this.averageDateDiff = this.averageDateDiff + (consulter.getDatefinvisite().getTime() - consulter.getDatedebutvisite().getTime());
             }
         }
         System.out.println(this.averageDateDiff +", "+ listConsulter.size(  ));

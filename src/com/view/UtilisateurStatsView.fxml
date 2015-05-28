@@ -19,8 +19,8 @@
       <Label layoutX="91.0" layoutY="157.0" text="Nombre total d'utilisateurs inscrits :" />
       <Label fx:id="usersToday" layoutX="323.0" layoutY="119.0" prefWidth="200.0" text="0" />
       <Label fx:id="totalUsers" layoutX="323.0" layoutY="157.0" prefWidth="200.0" text="0" />
-      <Hyperlink layoutX="45.0" layoutY="40.0" onAction="#backAction" text="&lt; Back" />
-      <Label fx:id="averageTime" layoutX="323.0" layoutY="192.0" prefWidth="200.0" text="0" />
-      <Label layoutX="115.0" layoutY="192.0" text="Temps moyen de consultation :" />
+      <Hyperlink layoutX="45.0" layoutY="40.0" onAction="#backAction" text="&lt; Retour" />
+      <Label fx:id="averageTime" layoutX="323.0" layoutY="192.0" prefWidth="200.0" text="0" visible="false" />
+      <Label fx:id="averageTimeLabel" layoutX="115.0" layoutY="192.0" text="Temps moyen de consultation :" visible="false" />
    </children>
 </AnchorPane>

@@ -46,6 +46,8 @@ public class HitParadeViewController implements Initializable {
     @FXML
     private Label totalVisites;
     @FXML
+    private Label totalVisitesLabel;
+    @FXML
     private TableView<Article> articleStatTable;
     @FXML
     private TableColumn<Article, String> articleNameStatColumn;
@@ -71,7 +73,8 @@ public class HitParadeViewController implements Initializable {
         ACSIController acsi = new ACSIController();
         currentUser = acsi.getUtilisateur();
         if(currentUser.getUtIsadmin() == 1){
-            advanceStatsLink.setVisible(true);
+            totalVisites.setVisible(true);
+            totalVisitesLabel.setVisible(true);
         }
         
         listArticle = articleDAO.listArticle();

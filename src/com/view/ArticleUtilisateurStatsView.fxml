@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ArticleUtilisateurStatsViewController">
    <children>
-      <BarChart fx:id="barChart" layoutX="50.0" layoutY="81.0" prefHeight="319.0" prefWidth="600.0" title="Visiteurs par code postal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+      <BarChart fx:id="barChart" layoutX="50.0" layoutY="81.0" prefHeight="319.0" prefWidth="600.0" title="Visites par code postal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -25,8 +25,8 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="addedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="21.0" prefWidth="200.0" text="0" />
-      <Label fx:id="deletedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="40.0" prefWidth="200.0" text="0" />
-      <Label fx:id="updatedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="57.0" prefWidth="200.0" text="0" />
+      <Label fx:id="addedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="21.0" prefWidth="200.0" text="0" visible="false" />
+      <Label fx:id="deletedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="40.0" prefWidth="200.0" text="0" visible="false" />
+      <Label fx:id="updatedArticlesLabel" alignment="CENTER_RIGHT" layoutX="388.0" layoutY="57.0" prefWidth="200.0" text="0" visible="false" />
    </children>
 </AnchorPane>

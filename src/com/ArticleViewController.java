@@ -85,7 +85,7 @@ public class ArticleViewController implements Initializable {
     }
     
     @FXML
-    public void editArticleAction(ActionEvent event) throws IOException{        
+    public void editArticleAction(ActionEvent event) throws IOException{   
         (((Node) event.getSource()).getScene()).getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("view/EditArticleView.fxml"));

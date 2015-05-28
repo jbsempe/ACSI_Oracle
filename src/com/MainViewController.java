@@ -41,6 +41,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
@@ -105,7 +106,7 @@ public class MainViewController implements Initializable {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Article article = row.getItem();
                     try {
-                        showArticleView(article);
+                        showArticleView(event, article);
                     } catch (IOException ex) {
                         Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -141,7 +142,8 @@ public class MainViewController implements Initializable {
         stage.show();
     }
     
-    public void showArticleView(Article article) throws IOException{
+    public void showArticleView(MouseEvent event, Article article) throws IOException{
+        (((Node) event.getSource()).getScene()).getWindow().hide();
         
         Consulter consulter = new Consulter();
         java.util.Date date= new java.util.Date();
@@ -169,6 +171,18 @@ public class MainViewController implements Initializable {
                 consulter.setDatefinvisite(new Timestamp(endDate.getTime()));
                 consulterDAO.update(consulter);
                 System.out.println(currentTimestamp);
+                ((Node)event.getSource()).getScene().getWindow().hide();
+                Parent parent = null;
+                try {
+                    parent = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Scene scene = new Scene(parent);
+                Stage stage = new Stage();
+                stage.setTitle("ACSI - Liste articles");
+                stage.setScene(scene);
+                stage.show();
             }
         });      
         stage.show();
